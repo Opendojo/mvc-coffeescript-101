@@ -194,7 +194,8 @@ CoffeeScript
       <ul class="nobull">
          <li>Install the coffee script package: <a href="https://github.com/Xavura/CoffeeScript-Sublime-Plugin">https://github.com/Xavura/CoffeeScript-Sublime-Plugin</a></li>
          <li>Use the <em>via package control</em> method</li>
-         <li>Take a valid <a href="https://raw.githubusercontent.com/Opendojo/mvc-coffeescript-101/presa/Cakefile">Cakefile</a></li>
+         <li>Create a <a href="https://raw.githubusercontent.com/Opendojo/mvc-coffeescript-101/presa/Cakefile">Cakefile</a> at the root of your sublime project</li>
+         <li>Modify the cake file to your needs... But what are your needs?</li>
       </ul>
       <img src="pictures/mvc101/04-lovecoffee.jpg" class="middle" alt="Love coffee" width="100%">
       <small class="credits">
@@ -208,6 +209,81 @@ CoffeeScript
     </section>
   </div></div>
 
+
+
+<!-- ===================================================================
+Webapp - Directory structure 
+======================================================================== -->
+
+  <div id="webapp" class="slide shout"><div>
+    <section>
+      <header>
+        <h2>Webapp structure</h2>
+      </header>
+    <footer class="notes">
+      Folder Structure
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="webappstructure" class="slide"><div>
+    <section>
+      <header>
+        <h2>Webapp Structure</h2>
+      </header>
+      <ul class="longlist">
+        <li>SOURCES/
+          <ul>
+            <li>app/coffee/
+              <ul>
+                <li>model/</li>
+                <li>view/</li>
+                <li>controller/</li>
+              </ul>
+            </li>
+            <li>app/js/</li>
+            <li>app/js/vendor/</li>
+            <li>static/</li>
+            <li>index.html</li>
+          </ul>
+        </li>
+        <li>BUILD/</li>
+        <li>TESTS/</li>
+        <li>Cakefile</li>
+      </ul>
+    <footer class="notes">
+      TODO: structure
+      Explain: SOURCES, BUILD, TESTS
+      Git version tests = git version of source
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="webappindex" class="slide"><div>
+    <section>
+      <header>
+        <h2>Webapp Structure: <em>index</em></h2>
+      </header>
+      <pre>
+        <code>&lt;!DOCTYPE html&gt;</code>
+        <code>&lt;html&gt;</code>
+        <code>  &lt;head&gt;</code>
+        <code>    &lt;title&gt;MVC - CoffeeScript - 101&lt;/title&gt;</code>
+        <code>    &lt;link href="static/css/main.css" rel="stylesheet" type="text/css" media="all" /&gt;</code>
+        <code>  &lt;/head&gt;</code>
+        <code>  &lt;body&gt;</code>
+        <code>    &lt;h1&gt;Hello World&lt;/h1&gt;</code>
+        <code>  &lt;/body&gt;</code>
+        <code>&lt;/html&gt;</code>
+      </pre>
+    <footer class="notes">
+      TODO: 
+        - create the index file and test (+ configure apache)
+        - create the css
+        - check console
+    </footer>
+    </section>
+  </div></div>
 
 
 <!-- ===================================================================
