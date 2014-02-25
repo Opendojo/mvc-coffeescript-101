@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<!-- <html lang="en-US"> -->
+<html lang="en-US" class="fade">
+<!-- 
+  ^ a class of "fade" makes slides fade smoothly into one another
+ -->
+<!-- <html lang="en-US" class="nonumbers"> -->
+<!-- 
+  If you want no numbers on the slides add a "nonumbers" class 
+  to the HTML element.
+  Adding a class of "fade" will make slides fade into another. 
+-->
+<head>
+  <meta charset="UTF-8">
+  <title>CoffeeScript - MVC from Scratch - 101</title>
+<!-- 
+  If you upload your slides to the web, ensure that you have 
+  a good title - this shows up in search results and social
+  media links
+ -->
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
+  <link rel="stylesheet" href="themes/mozilla/styles/style.css">
+  <style type="text/css">
+    div[id$='bullets'].slide > div::after {
+      content: 'For Information only, do NOT present';
+      background: rgba(200,0,0,0.5);
+      color: #fff;
+      position: absolute;
+      top: 20px;
+      right: 0;
+      padding: 5px 20px;
+      transform: rotate(90deg) translate(52%,-150px);
+      border-radius: 5px;
+    }
+    .full div[id$='bullets'].slide > div::after {
+      animation: wiggle alternate 1s infinite;
+    }
+    @keyframes wiggle {
+      from {
+        transform: rotate(90deg) translate(52%,-150px);
+      }
+      to {
+        transform: rotate(90deg) translate(52%,-160px);
+      }
+    }
+    .demourl {
+      bottom: 10px;
+    }
+  </style>
+</head>
+<body class="list">
+
+  <header class="caption">
+    <h1>CoffeeScript - MVC from Scratch - 101</h1>
+    <p class="footer">
+      Sébastien Barbieri, 
+      <a href="http://twitter.com/scips">@scips</a> 
+    </p>
+  </header>
+  <aside class="talkdescription">
+    <p>Create your own MVC in CoffeeScript using require.js and jquery<button onclick="goFullScreen()">Go fullscreen</button></p>
+    <p class="abstract">
+      <strong>Abstract: </strong>
+      Follow this guide to create your own MVC app in CoffeeScript using require js and jquery
+    </p>
+  </aside>
+
+<!-- 
+      <a href="http://coffeescript.org/">CoffeeScript</a>
+      <a href="http://requirejs.org/">Require.JS</a>
+      <a href="http://jquery.com/">Jquery</a>
+
+    Simply copy the whole block for each slide you want.
+  Special slides get extra classes. Each slide needs an ID 
+  to allow for bookmarking and target jumping.
+-->
+
+  <div id="cover" class="slide"><div>
+    <section>
+      <header>
+        <h2>MVC - CoffeeScript - 101</h2>
+      </header>
+      <img src="pictures/mvc101/01-intro.png" 
+           class="middle shadow" height="300"
+           alt="">
+      <small class="byline">
+        Sébastien Barbieri, RTBF, 25-02-2014
+      </small>
+      <footer class="notes">
+        Cover slide
+      </footer>
+    </section>
+  </div></div>
+
+<!-- end slide block -->
+
+<!-- ===================================================================
+CoffeeScript 
+======================================================================== -->
+
+  <div id="coffeescript" class="slide shout"><div>
+    <section>
+      <header>
+        <h2>CoffeeScript</h2>
+      </header>
+    <footer class="notes">
+      Jeremy Ashkenas (Backbone, Underscore)
+      Compile into JS (transpile)
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="whatscoffeescript" class="slide"><div>
+    <section>
+      <header>
+        <h2>CoffeeScript</h2>
+      </header>
+      <ul class="inner">
+        <li class="active">Language that compile in Javascript</li>
+        <li>Cross browser compatible</li>
+        <li>Best practices</li>
+        <li>Easier to read</li>
+        <li>Syntax validator</li>
+        <li>Classes</li>
+      </ul>
+    <footer class="notes">
+    function test(){
+      console.log("test named function");
+    }
+    test();
+    var test=function(){
+      console.log("test anonymous function");
+    }
+    test();
+
+    ECMA Script 6 idea
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="installcoffeescript" class="slide"><div>
+    <section>
+      <header>
+        <h2>Install coffee script</h2>
+      </header>
+      <ul class="inner">
+        <li class="active"><strong>sudo npm install -g coffee-script</strong></li>
+        <li>Create a file: <strong>touch test.coffee</strong></li>
+        <li>in a terminal run: <strong>coffee test.coffee</strong></li>
+        <li>add some code    
+          <pre><code>console.log "Hello world"</code></pre>
+        </li>
+        <li>run again: <strong>coffee test.coffee</strong></li>
+        <li>compile: <strong>coffee -c test.coffee</strong></li>
+        <li>Check js generated file: <strong>cat test.js</strong></li>
+      </ul>
+      <p class="demourl"><a href="http://coffeescript.org/">CoffeeScript</a></p>
+    <footer class="notes">
+      CoffeeScript is available as an NPM package
+    </footer>
+    </section>
+  </div></div>
+
+
+  <div id="cakecoffeescript" class="slide cover"><div>
+    <section>
+      <header>
+        <h2>No coffee without <em>cake</em></h2>
+      </header>
+      <ul class="nobull">
+         <li><strong>Cake</strong> is the <strong>Make</strong> for CoffeeScript</li>
+         <li><strong>Cakefile</strong>: are the equivalent of makefile</li>
+         <li>cakefiles use tasks that you can launch by running: <strong>cake mytask</strong></li>
+      </ul>
+      <p>It will be used:</p>
+      <ul>
+         <li>To build our application (compile, concatenate, minify...)</li>
+      </ul>
+      <img src="pictures/mvc101/03-cake.jpg" class="middle" alt="Cake for your coffee" width="100%">
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/chambrayandcurls/"><em>Photo by Laura</em></a>
+      </small>
+    <footer class="notes">
+      Build within sublime (sbuild), launch tasks (concatenate, minify...)
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="sublimecoffeescript" class="slide cover"><div>
+    <section>
+      <header>
+        <h2>CoffeeScript + Cake + Sublime</h2>
+      </header>
+      <ul class="nobull">
+         <li>Install the coffee script package: <a href="https://github.com/Xavura/CoffeeScript-Sublime-Plugin">https://github.com/Xavura/CoffeeScript-Sublime-Plugin</a></li>
+         <li>Use the <em>via package control</em> method</li>
+
+      </ul>
+      <img src="pictures/mvc101/04-lovecoffee.jpg" class="middle" alt="Love coffee" width="100%">
+      <small class="credits">
+        <a href="http://www.flickr.com/photos/chambrayandcurls/"><em>Photo by Laura</em></a>
+      </small>
+    <footer class="notes">
+      Install package
+      Press F7, Ctrl-Shift-C, Ctrl-Shift-S
+      Use a good cakefile
+    </footer>
+    </section>
+  </div></div>
+
+
+
+<!-- ===================================================================
+Require JS - AMD 
+======================================================================== -->
+
+  <div id="requirejs" class="slide shout"><div>
+    <section>
+      <header>
+        <h2>Require.JS</h2>
+      </header>
+    <footer class="notes">
+      AMD: Asynchronous Module Definition
+    </footer>
+    </section>
+  </div></div>
+
+<!-- ===================================================================
+Thanks
+======================================================================== -->
+
+  <div id="thanks" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Thanks</h2>
+      </header>
+      <ul class="nobull">
+        <li>Sébastien Barbieri</li>
+        <li>CrossMedia Solution Engineer @RTBF</li>
+        <li><a href="http://twitter.com/scips">@scips</a></li>
+        <li><strong>Slides</strong>: <a href="http://opendojo.github.io/mvc-coffeescript-101/presa/">http://opendojo.github.io/mvc-coffeescript-101/presa/</a></li>
+      </ul>
+
+      <img src="pictures/mvc101/02-thanks.jpg" class="middle" alt="Switzerland" width="100%">
+      <small class="credits">
+        <em>Photo by SCiPS</em>
+      </small>
+
+    <footer class="notes">
+    </footer>
+
+    </section>
+  </div></div>
+
+  <!--
+    To hide progress bar from entire presentation
+    just remove “progress” element.
+    -->
+  <div class="progress"><div></div></div>
+  <script src="scripts/script.js"></script>
+  <!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+</body>
+</html>
