@@ -447,10 +447,10 @@ Require JS - AMD
       </header>
       <p>The main app is simply launched via data-main</p>
       <pre>
-        <code>&lt;script data-main="app/main" src="scripts/require.js"&gt;</code>
+        <code>&lt;script data-main="scripts/bootstrap" src="scripts/vendor/require.js"&gt;</code>
         <code>&lt;/script&gt;</code>
       </pre>
-      <p>This will launch the scripts/main.js file</p>
+      <p>This will launch the scripts/bootstrap.js file</p>
     <footer class="notes">
       It's not needed to specify the file extension
     </footer>
@@ -460,19 +460,24 @@ Require JS - AMD
   <div id="mainbootstraprequirejs" class="slide"><div>
     <section>
       <header>
-        <h2>Require.JS: <em>main app</em></h2>
+        <h2>Require.JS: <em>Bootstrap</em></h2>
       </header>
-      <p>the main script should simply load the application and launch it</p>
+      <p>the bootstrap prepare the path and is ideally located in the root webapp folder</p>
       <pre>
-        <code>define ['app/controller/main'],(Application)</code>
-        <code>  $(document).ready ()-> </code>
-        <code>    app = new Application()</code>
-        <code>    app.launch()</code>
-        <code></code>
+        <code>require.config(</code>
+        <code>  paths:</code>
+        <code>    jquery: 'vendor/jquery-2.1.0'</code>
+        <code>)</code>
+        <code>require ['jquery','app/controller/main'],($,Application)-&gt;</code>
+        <code>  $(document).ready(</code>
+        <code>    ()-&gt;</code>
+        <code>      app = new Application()</code>
+        <code>      app.launch()</code>
       </pre>
       <p>This will launch the scripts/main.js file</p>
     <footer class="notes">
-      It's not needed to specify the file extension
+      Bootstrap define paths (require.config)
+      - load jquery and the main controller
     </footer>
     </section>
   </div></div>
@@ -516,7 +521,7 @@ Simple MVC webapp all together
       </header>
       <p>Create the main controller</p>
       <pre>
-        <code>define ['vendor/jquery'</code>
+        <code>define ['jquery'</code>
         <code>  ,'app/controller/screen1'</code>
         <code>  ,'app/controller/screen2'],</code>
         <code>  ($,Screen1Controller,Screen2Controller)-></code>
@@ -545,6 +550,8 @@ Simple MVC webapp all together
         <code>      if event.action is 'screen2'</code>
         <code>        CtrlScreen1.hide()</code>
         <code>        CtrlScreen2.show()</code>
+        <code>    launch:()-&gt;</code>
+        <code>    listen:()-&gt;</code>
         <code></code>
       </pre>
     <footer class="notes">
@@ -600,6 +607,44 @@ Simple MVC webapp all together
     </section>
   </div></div>
 
+<!-- ===================================================================
+Adding the view
+======================================================================== -->
+
+  <div id="VforView" class="slide shout"><div>
+    <section>
+      <header>
+        <h2>The V stands for VIEW</h2>
+      </header>
+    <footer class="notes">
+      Split responsibility between controller and view
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="VforViewDOJO" class="slide"><div>
+    <section>
+      <header>
+        <h2>MVC: the view DOJO</h2>
+      </header>
+      <p>Create views</p>
+      <ul>
+        <li>Create 2 div with classes: js-screen1-view, js-screen2-view</li>
+        <li>Create the parent view
+          <ul>
+            <li>constructor(@selector)</li>
+            <li>show()</li>
+            <li>hide()</li>
+          </ul>
+        </li>
+        <li>Create the Screen1View and Screen2View with parent inheritence</li>
+        <li>Use the Screen1View and the Screen1View in the Screen1Controller and the Screen2Controller</li>
+      </ul>
+    <footer class="notes">
+      As an exercice create the view, screen1view, screen2view
+    </footer>
+    </section>
+  </div></div>
 
 <!-- ===================================================================
 Thanks
