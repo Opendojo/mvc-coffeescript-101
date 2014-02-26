@@ -186,6 +186,104 @@ CoffeeScript
     </section>
   </div></div>
 
+  <div id="classcoffeesript" class="slide"><div>
+    <section>
+      <header>
+        <h2>Coffee 101</h2>
+      </header>
+      <ul>
+        <li>Concatenate: "some" + "things"</li>
+        <li>Object/Array: {prop1:"val1",prop2:"val2"} / ["val1","val2"]</li>
+        <li>Assign: a = 1 + 1</li>
+        <li>Conditions: if test1 is "hello" and test2 is true ... else ... </li>
+        <li>Loops: eat food for food in ['toast', 'cheese', 'wine']</li>
+        <li>Functions: eat = (item='')-&gt; console.log("eating #{item}"); "burp";</li>
+        <li>Class: class Video contructor:(@item)-&gt; play:()-&gt; @classMethod:()-&gt;</li>
+        <li>Inherit: class VideoController extends Controller</li>
+      </ul>
+    <footer class="notes">
+      Use interactive coffee
+      Space is a good habit
+      Object indented with spaces
+      Concatenate 1+"a"
+      
+      if is isnt else + indent
+      value = 1 if test is true
+      value = 1 unless test is false
+      
+      foods = ['broccoli', 'spinach', 'chocolate']
+      eat food for food in foods when food isnt 'chocolate'
+      foods_no_choc = for food in foods when food isnt 'chocolate'
+
+      Functions return by default + indent
+
+      Class indentation, default constructor function name
+      Class method
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="todocoffeesript" class="slide"><div>
+    <section>
+      <header>
+        <h2>Coffee 101: DOJO</h2>
+      </header>
+      <ol class="longlist">
+        <li>Create a test.coffee file</li>
+        <li>Create a class called Controller
+          <ol>
+            <li>create the constructor function that initialize a name property and count the number of instance created</li>
+            <li>create the show function that print out the name of the controller</li>
+            <li>create the hide function that print out the name of the controller + "hidden"</li>
+            <li>create a getCount static method that returns the number of instances created</li>
+          </ol>
+        </li>
+        <li>Create a class called LoadingController that extends Controller
+          <ol>
+            <li>override the hide function by printing "overrided" + call the parent</li>
+          </ol>
+        </li>
+        <li>Create an instance of LoadingController + call show and then hide</li>
+        <li>Create a second instance of LoadingController + call show and then hide</li>
+        <li>Display the number of instance created</li>
+      </ol>
+    <footer class="notes">
+      class Controller
+        count: 0
+        
+        Controller::getCount = ->
+          Controller::count
+
+        constructor:(name)->
+          @name = name
+          Controller::count++
+
+        show: ()->
+          console.log "#{@name}"
+        hide: ()->
+          console.log "#{@name} hidden"
+
+
+
+      class LoadingController extends Controller
+        hide: ()->
+          console.log "overrided"
+          super()
+
+      myInstance = new LoadingController("loading")
+      myInstance2 = new LoadingController("loading2")
+
+      myInstance.show()
+      myInstance2.show()
+      myInstance.hide()
+      myInstance2.hide()
+
+      console.log(LoadingController::getCount())
+    </footer>
+    </section>
+  </div></div>
+
+
   <div id="sublimecoffeescript" class="slide cover"><div>
     <section>
       <header>
@@ -234,15 +332,14 @@ Webapp - Directory structure
       <ul class="longlist">
         <li>SOURCES/
           <ul>
-            <li>app/coffee/
+            <li>app/
               <ul>
                 <li>model/</li>
                 <li>view/</li>
                 <li>controller/</li>
               </ul>
             </li>
-            <li>app/js/</li>
-            <li>app/js/vendor/</li>
+            <li>app/vendor/: all the needed scripts (jquery, require...)</li>
             <li>static/</li>
             <li>index.html</li>
           </ul>
@@ -285,6 +382,26 @@ Webapp - Directory structure
     </section>
   </div></div>
 
+  <div id="webapptodo" class="slide"><div>
+    <section>
+      <header>
+        <h2>Webapp Structure DOJO</h2>
+      </header>
+      <ul>
+        <li>Create the directory structure</li>
+        <li>Create the index file</li>
+        <li>Create the css file</li>
+        <li>Test</li>
+      </ul>
+    <footer class="notes">
+      TODO: 
+        - create the index file and test (+ configure apache)
+        - create the css
+        - check console
+    </footer>
+    </section>
+  </div></div>
+
 
 <!-- ===================================================================
 Require JS - AMD 
@@ -296,10 +413,193 @@ Require JS - AMD
         <h2>Require.JS</h2>
       </header>
     <footer class="notes">
+      James Burke
       AMD: Asynchronous Module Definition
+      script tag and global namespace
+      Dependency and order
+      Complex optimization
     </footer>
     </section>
   </div></div>
+
+  <div id="amdrequirejs" class="slide"><div>
+    <section>
+      <header>
+        <h2>Require.JS: <em>AMD</em></h2>
+      </header>
+      <p>Anonymous module</p>
+      <pre>
+        <code>define(['dep1', 'dep2'], function (dep1, dep2) {</code>
+        <code>  return function () {};</code>
+        <code>});</code>
+      </pre>
+
+    <footer class="notes">
+      Explain difference between anonymous module and named modules
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="mainrequirejs" class="slide"><div>
+    <section>
+      <header>
+        <h2>Require.JS: <em>main app</em></h2>
+      </header>
+      <p>The main app is simply launched via data-main</p>
+      <pre>
+        <code>&lt;script data-main="app/main" src="scripts/require.js"&gt;</code>
+        <code>&lt;/script&gt;</code>
+      </pre>
+      <p>This will launch the scripts/main.js file</p>
+    <footer class="notes">
+      It's not needed to specify the file extension
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="mainbootstraprequirejs" class="slide"><div>
+    <section>
+      <header>
+        <h2>Require.JS: <em>main app</em></h2>
+      </header>
+      <p>the main script should simply load the application and launch it</p>
+      <pre>
+        <code>define ['app/controller/main'],(Application)</code>
+        <code>  $(document).ready ()-> </code>
+        <code>    app = new Application()</code>
+        <code>    app.launch()</code>
+        <code></code>
+      </pre>
+      <p>This will launch the scripts/main.js file</p>
+    <footer class="notes">
+      It's not needed to specify the file extension
+    </footer>
+    </section>
+  </div></div>
+
+<!-- ===================================================================
+Simple MVC webapp all together 
+======================================================================== -->
+
+  <div id="alltogether" class="slide shout"><div>
+    <section>
+      <header>
+        <h2>Let's make the MVC</h2>
+      </header>
+    <footer class="notes">
+      Start with the main controller
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="alltogethermainpart0" class="slide"><div>
+    <section>
+      <header>
+        <h2>MVC: main app</h2>
+      </header>
+      <p>Add vendor scripts</p>
+      <ul>
+        <li>requirejs</li>
+        <li>jquery 2</li>
+      </ul>
+    <footer class="notes">
+      Explain the main controller
+    </footer>
+    </section>
+  </div></div>
+
+
+  <div id="alltogethermainpart1" class="slide"><div>
+    <section>
+      <header>
+        <h2>MVC: main app (1/4)</h2>
+      </header>
+      <p>Create the main controller</p>
+      <pre>
+        <code>define ['vendor/jquery'</code>
+        <code>  ,'app/controller/screen1'</code>
+        <code>  ,'app/controller/screen2'],</code>
+        <code>  ($,Screen1Controller,Screen2Controller)-></code>
+        <code>  class MainController</code>
+        <code>    constructor:()-&gt;</code>
+        <code>      @CtrlScreen1 = new Screen1Controller()</code>
+        <code>      @CtrlScreen2 = new Screen2Controller()</code>
+      </pre>
+    <footer class="notes">
+      Explain the main controller
+    </footer>
+    </section>
+  </div></div>
+
+
+  <div id="alltogethermainpart2" class="slide"><div>
+    <section>
+      <header>
+        <h2>MVC: main app (2/4)</h2>
+      </header>
+      <pre>
+        <code>    dispatch:(event)-&gt;</code>
+        <code>      if event.action is 'screen1'</code>
+        <code>        CtrlScreen2.hide()</code>
+        <code>        CtrlScreen1.show()</code>
+        <code>      if event.action is 'screen2'</code>
+        <code>        CtrlScreen1.hide()</code>
+        <code>        CtrlScreen2.show()</code>
+        <code></code>
+      </pre>
+    <footer class="notes">
+      Continued main controller
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="alltogethermainpart3" class="slide"><div>
+    <section>
+      <header>
+        <h2>MVC: main app (3/4) DOJO</h2>
+      </header>
+      <ul>
+        <li>Create app/controller/screen.coffee</li>
+        <li>Add a class ScreenController with the following functions:
+          <ul>
+            <li>Contructor</li>
+            <li>Show</li>
+            <li>Hide</li>
+          </ul>
+        </li>
+        <li>each method will simply do a console.log</li>
+        <li>Create app/controller/screen1.coffee</li>
+        <li>Add a class Screen1Controller that extends Screen</li>
+        <li>Create app/controller/screen2.coffee</li>
+        <li>Add a class Screen2Controller that extends Screen</li>
+      </ul>
+    <footer class="notes">
+      Let the creation of the other controller for the DOJO
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="alltogethermainpart4" class="slide"><div>
+    <section>
+      <header>
+        <h2>MVC: main app (4/4) DOJO</h2>
+      </header>
+      <ul>
+        <li>Bind the main controller to any event receveid by the body</li>
+        <li>Launch the application</li>
+        <li>Use the console to trigger jquery event</li>
+      </ul>
+      <pre>
+        <code>e = new Event("application");</code>
+        <code>e.action="screen1";</code>
+        <code>$(body).trigger(e);</code>
+      </pre>
+    <footer class="notes">
+      
+    </footer>
+    </section>
+  </div></div>
+
 
 <!-- ===================================================================
 Thanks
