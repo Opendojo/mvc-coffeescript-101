@@ -6,16 +6,18 @@ define(["jquery", "app/controller/screen1", "app/controller/screen2"], function(
   return Application = (function() {
     function Application() {
       this.bind = __bind(this.bind, this);
+      this.listen = __bind(this.listen, this);
       this.Screen1 = new Screen1Controller();
       this.Screen2 = new Screen2Controller();
     }
 
     Application.prototype.launch = function() {
+      this.listen();
       return this.bind();
     };
 
-    Application.prototype.bind = function() {
-      console.log("Binding");
+    Application.prototype.listen = function() {
+      console.log("Listening");
       return $('body').on("application", (function(_this) {
         return function(e) {
           console.log("Event received");
@@ -24,6 +26,21 @@ define(["jquery", "app/controller/screen1", "app/controller/screen2"], function(
           }
         };
       })(this));
+    };
+
+    Application.prototype.bind = function() {
+      $('.js-screen1-trigger').on("click", function() {
+        var e;
+        e = new $.Event("application");
+        e.action = "screen1";
+        return $('body').trigger(e);
+      });
+      return $('.js-screen2-trigger').on("click", function() {
+        var e;
+        e = new $.Event("application");
+        e.action = "screen2";
+        return $('body').trigger(e);
+      });
     };
 
     Application.prototype.dispatch = function(event) {

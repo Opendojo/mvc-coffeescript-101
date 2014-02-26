@@ -5,11 +5,17 @@ define(['jquery'], function($) {
     function ScreenController() {}
 
     ScreenController.prototype.show = function() {
-      return console.log("Show");
+      console.log("Show");
+      return this.view.show();
     };
 
     ScreenController.prototype.hide = function() {
-      return console.log("Hide");
+      console.log("Hide");
+      return this.view.hide();
+    };
+
+    ScreenController.prototype.setView = function(view) {
+      this.view = view;
     };
 
     return ScreenController;

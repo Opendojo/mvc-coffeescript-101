@@ -2,13 +2,13 @@
 var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-define(['jquery', 'app/controller/screen'], function($, ScreenController) {
+define(['jquery', 'app/controller/screen', 'app/view/screen1'], function($, ScreenController, Screen1View) {
   var Screen1Controller;
   return Screen1Controller = (function(_super) {
     __extends(Screen1Controller, _super);
 
     function Screen1Controller() {
-      return Screen1Controller.__super__.constructor.apply(this, arguments);
+      this.setView(new Screen1View('.js-screen1'));
     }
 
     return Screen1Controller;

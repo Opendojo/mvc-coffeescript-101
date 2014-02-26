@@ -2,16 +2,16 @@
 var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-define(['jquery', 'app/controller/screen', 'app/view/screen1'], function($, ScreenController, Screen2View) {
-  var Screen2Controller;
-  return Screen2Controller = (function(_super) {
-    __extends(Screen2Controller, _super);
+define(['jquery', 'app/view/screen'], function($, Screen) {
+  var Screen1View;
+  return Screen1View = (function(_super) {
+    __extends(Screen1View, _super);
 
-    function Screen2Controller() {
-      this.setView(new Screen2View('.js-screen2'));
+    function Screen1View() {
+      return Screen1View.__super__.constructor.apply(this, arguments);
     }
 
-    return Screen2Controller;
+    return Screen1View;
 
-  })(ScreenController);
+  })(Screen);
 });
